@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:medical_app/controller/doctors/doc_controller.dart';
 import 'package:medical_app/view/home/widgets/appointment.dart';
 import 'package:medical_app/view/home/widgets/doctor_list.dart';
 import 'package:medical_app/view/home/widgets/header.dart';
 import 'package:medical_app/view/home/widgets/medical_List.dart';
 import 'package:medical_app/view/home/widgets/my_search.dart';
+import 'package:provider/provider.dart';
 
 
 
@@ -14,7 +16,15 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+
 class _HomeScreenState extends State<HomeScreen> {
+
+  @override
+  void initState() {
+    final doctorController = Provider.of<DoctorController>(context,listen: false);
+    doctorController.loadAllDoctors();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

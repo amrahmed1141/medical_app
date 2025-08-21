@@ -1,5 +1,5 @@
 
-class Doctor {
+class DoctorData {
   final int id;
   final String name;
   final String specialty;
@@ -9,7 +9,7 @@ class Doctor {
   final int reviews;
   final double price;
 
-  Doctor({
+  DoctorData({
     required this.id,
     required this.name,
     required this.specialty,
@@ -21,8 +21,8 @@ class Doctor {
   });
 }
 
- final List<Doctor> doctors = [
-    Doctor(
+ final List<DoctorData> doctors = [
+    DoctorData(
       id: 1,
       name: "Dr. Sarah Johnson",
       specialty: "Cardiologist",
@@ -32,7 +32,7 @@ class Doctor {
       reviews: 128,
       price: 120,
     ),
-    Doctor(
+    DoctorData(
       id: 2,
       name: "Dr. Michael Chen",
       specialty: "Neurologist",
@@ -42,7 +42,7 @@ class Doctor {
       reviews: 95,
       price: 150,
     ),
-    Doctor(
+    DoctorData(
       id: 3,
       name: "Dr. Bessie Wilson",
       specialty: "Pediatrician",

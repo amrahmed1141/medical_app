@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:medical_app/bottom_navigation.dart';
 import 'package:medical_app/controller/category_controller.dart';
+import 'package:medical_app/controller/doctors/doc_controller.dart';
+import 'package:medical_app/controller/doctors/doctors_controller.dart';
 import 'package:medical_app/view/auth/sign_in_screen.dart';
 import 'package:medical_app/view/auth/sign_up_screen.dart';
 import 'package:medical_app/view/home/home.dart';
@@ -29,7 +32,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => CategoryController()),
-        ChangeNotifierProvider(create: (_) => AuthController())
+        ChangeNotifierProvider(create: (_) => AuthController()),
+        ChangeNotifierProvider(create: (_) => DoctorController())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -46,7 +50,7 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: const SignUpScreen(),
+        home:  const MainScreen(),
       ),
     );
   }

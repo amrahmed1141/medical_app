@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medical_app/controller/category_controller.dart';
+import 'package:medical_app/controller/doctors/doc_controller.dart';
+import 'package:medical_app/controller/doctors/doctors_controller.dart';
 import 'package:medical_app/model/category_model.dart';
 import 'package:medical_app/view/home/widgets/medical_container.dart';
 import 'package:provider/provider.dart';
@@ -25,6 +27,8 @@ class MedicalList extends StatelessWidget {
                 return GestureDetector(
                   onTap: () {
                     controller.selectCategory(index);
+                 final categoryName = categories[index].name;
+                context.read<DoctorController>().loadDoctorsByCategory(categoryName);
                   },
                   child: MedicalContainer(
                     name: med.name,
