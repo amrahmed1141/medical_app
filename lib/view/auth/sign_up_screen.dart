@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:medical_app/bottom_navigation.dart';
 import 'package:medical_app/controller/auth/auth_controller.dart';
+import 'package:medical_app/view/auth/sign_in_screen.dart';
 import 'package:medical_app/view/auth/widgets/auth_textfield.dart';
-import 'package:medical_app/view/home/home.dart';
 import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -133,13 +134,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               _emailController.text,
                               _passwordController.text,
                               _nameController.text,
+                              context, // Pass context here
                             );
                             
                             if (success) {
-                               ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Sign up successful!')),
-                          );
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const HomeScreen()));
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text('Sign up successful!')),
+                              );
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const MainScreen()));
                             }
                           }
                         },
@@ -160,7 +162,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Text('Already have an account?'),
                   TextButton(
                     onPressed: () {
-                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const SignUpScreen()));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const SignInScreen()));
                     },
                     child: Text('Sign In'),
                   ),

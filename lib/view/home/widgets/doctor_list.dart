@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:medical_app/controller/details/details_controller.dart';
 import 'package:medical_app/controller/doctors/doc_controller.dart';
 import 'package:medical_app/model/doctors/doctors_model.dart';
+import 'package:medical_app/view/details/details_screen.dart';
 import 'package:provider/provider.dart';
 
 class DoctorList extends StatelessWidget {
@@ -76,6 +78,13 @@ class DoctorList extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         onTap: () {
           // Navigate to doctor details
+           final detailsController =
+            Provider.of<DetailsController>(context, listen: false);
+        detailsController.navigateDoctorDetails(doctor);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>  DoctorDetailsScreen(doctor: doctor,)));
         },
         child: Padding(
           padding: const EdgeInsets.all(16),

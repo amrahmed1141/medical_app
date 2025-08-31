@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/controller/auth/auth_controller.dart';
+import 'package:medical_app/bottom_navigation.dart';
+import 'package:medical_app/controller/auth/auth_controller.dart'; // Add this import
 import 'package:medical_app/view/auth/sign_up_screen.dart';
 import 'package:medical_app/view/auth/widgets/auth_textfield.dart';
-import 'package:medical_app/view/home/home.dart';
 import 'package:provider/provider.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -109,16 +109,17 @@ class _SignInScreenState extends State<SignInScreen> {
                             final success = await authController.signIn(
                               _emailController.text,
                               _passwordController.text,
+                              context, // Pass context here
                             );
 
                             if (success) {
-                               ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Sign in successful!')),
-                          );
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text('Sign in successful!')),
+                              );
                               Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomeScreen()));
+                                context,
+                                MaterialPageRoute(builder: (context) => const MainScreen()),
+                              );
                             }
                           }
                         },
@@ -139,7 +140,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   const Text("Don't have an account?"),
                   TextButton(
                     onPressed: () {
-                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const SignUpScreen()));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const SignUpScreen()));
                     },
                     child: const Text('Sign Up'),
                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medical_app/view/appointments/appointments.dart';
 import 'package:medical_app/view/booking/booking.dart';
 import 'package:medical_app/view/chat/chat.dart';
 import 'package:medical_app/view/home/home.dart';
@@ -17,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = [
     const HomeScreen(),
-    const BookingScreen(),
+    const AppointmentListScreen(),
     const ChatScreen(),
     const ProfileScreen(),
   ];
